@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package dlt;
+
+// The author service definition.
+service Author {
+  // Sends a greeting
+  rpc mintBlock (DirectedLedger) returns (DirectedLedger) {}
+}
+
+// The Ledger
+message DirectedLedger {
+  required int32 steps = 1;
+  
+  required string pubkey = 2;
+
+  required string default = 3;
+
+  message Block {
+    required string value = 1;
+    optional string signature = 2;
+  }
+
+  repeated Block blocks = 4;
+}
